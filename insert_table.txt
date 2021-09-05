@@ -1,0 +1,8 @@
+INSERT INTO forum.user (email, name, password) VALUES ('servulo.jr@gmail.com','Servulo Pires da Rocha Junior', '123456');
+
+INSERT INTO forum.course(name, category) VALUES('Spring Boot', 'Backend');
+INSERT INTO forum.course(name, category) VALUES('HTML 5', 'Frontend');
+
+INSERT INTO forum.topic(title, message, creation_date, status, author_id, course_id) values ('Title 1', 'Message 1', '2021-08-08 18:00:00', 'UNANSWERED', 1, 1);
+INSERT INTO forum.topic(title, message, creation_date, status, author_id, course_id) values ('Title 2', 'Message 2', '2021-08-08 19:00:00', 'UNANSWERED', 1, 1);
+INSERT INTO forum.topic(title, message, creation_date, status, author_id, course_id) values ('Title 3', 'Message 3', '2021-08-08 20:00:00', 'UNANSWERED', 1, 2);
