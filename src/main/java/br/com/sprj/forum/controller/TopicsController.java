@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -80,6 +81,7 @@ public class TopicsController {
 
     @PostMapping
     @Transactional
+    @CacheEvict(value = "topicsList", allEntries = true)
     public ResponseEntity<TopicDto> add(@RequestBody @Valid TopicForm topicForm, UriComponentsBuilder uriBuilder) {
 	Topic topic = topicForm.converter(courseRepository);
 	topicRepository.save(topic);
@@ -89,6 +91,7 @@ public class TopicsController {
 
     @PutMapping("/{id}")
     @Transactional
+    @CacheEvict(value = "topicsList", allEntries = true)
     public ResponseEntity<TopicDto> update(@PathVariable("id") Long id,
 	    @RequestBody @Valid TopicUpdateForm topicUpdateForm) {
 	Optional<Topic> optionalTopic = topicRepository.findById(id);
@@ -101,6 +104,7 @@ public class TopicsController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    @CacheEvict(value = "topicsList", allEntries = true)
     public ResponseEntity<?> remove(@PathVariable("id") Long id) {
 	Optional<Topic> optionalTopic = topicRepository.findById(id);
 	if (optionalTopic.isPresent()) {
