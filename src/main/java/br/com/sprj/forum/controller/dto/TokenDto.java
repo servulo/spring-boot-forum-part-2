@@ -7,7 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class TokenDto {
 
-    private String token;
-    private String type;
+    private String accessToken;
+    private String tokenType;
     
 }
